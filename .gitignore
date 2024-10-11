@@ -1,4 +1,6 @@
 /node_modules 
 /dist
+/output
 
 stations.json
+historic_fuel_stations_fetcher.js
