@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Interval, DateTime } from 'luxon';
+import { assertEquals } from 'typia';
 import { twoDigits } from '@/utils/numbers';
 import { sleep } from '@/utils/sleep';
-import { assertEquals } from 'typia';
-import { HistoricServiceStationsResult } from './models/historic-service-stations-result';
+import { HistoricServiceStationsResult } from '@/models/historic-service-stations-result';
 import { parseStationResult } from '@/parseStationResult';
 import { FormattedStation } from '@/models/formatted-station';
 import { writeToJsonFile } from '@/writeToJson';
@@ -35,7 +35,7 @@ const main = async () => {
         return axios.get(`https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestresHist/${twoDigits(date.get('day'))}-${twoDigits(date.get('month'))}-${twoDigits(date.get('year'))}`)
       })
   
-      console.log(`🛜 Fetch group ${groupKey}: ${group[0].day}-${group[0].month}-${group[0].year} to ${group[group.length-1].day}-${group[group.length-1].month}-${group[group.length-1].year}`)
+      console.log(`🛜 Fetch group ${groupKey}: ${twoDigits(group[0].day)}-${twoDigits(group[0].month)}-${group[0].year} to ${twoDigits(group[group.length-1].day)}-${twoDigits(group[group.length-1].month)}-${group[group.length-1].year}`)
       const results = await Promise.all(queries)
       console.log(`✅ Group ${groupKey} fetched successfully`)
 
