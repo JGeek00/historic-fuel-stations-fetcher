@@ -1,0 +1,14 @@
+{
+  "cSpell.words": [
+    "dotevnv"
+  ],
+  "cSpell.ignorePaths": [
+    "/package.json",
+    "/package-lock.json",
+    "/.gitignore",
+    "/tsconfig.json",
+    "/src/services/load-data.ts",
+    "/src/models/db/fuel-station.ts",
+    "/.github/workflows"
+  ]
+}
