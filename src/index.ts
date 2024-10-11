@@ -53,7 +53,7 @@ const main = async () => {
         ]
       }
 
-      await writeToJsonFile(stations)
+      await writeToJsonFile(stations, parseInt(groupKey))
 
       await sleep(60000)  // Sleep 1 minute
     }

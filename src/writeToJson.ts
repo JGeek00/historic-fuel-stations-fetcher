@@ -1,22 +1,27 @@
 import fs from 'fs/promises';
 import { assertEquals } from 'typia';
 import { FormattedStation } from "@/models/formatted-station";
-import defaults from "@/config/defaults.json"
 
-const fileExists = async () => {
+const checkPathExists = async (filePath: string) => {
   try {
-    await fs.access(defaults.filePath);
+    await fs.access(filePath);
     return true
   } catch {
     return false
   }
 }
 
-export const writeToJsonFile = async (stations: Array<FormattedStation>) => {
+export const writeToJsonFile = async (stations: Array<FormattedStation>, round: number) => {
+  const filePath = `data/stations-${round}.json`
   try {
-    let exists = await fileExists()
-    if (exists) {
-      const data = await fs.readFile(defaults.filePath, 'utf8');
+    const dirExists = await checkPathExists("./data")
+    if (!dirExists) {
+      await fs.mkdir("./data")
+    }
+
+    const fileExists = await checkPathExists(filePath)
+    if (fileExists) {
+      const data = await fs.readFile(filePath, 'utf8');
       const jsonData = JSON.parse(data);
 
       let parsedResult = assertEquals<Array<FormattedStation>>(jsonData)
@@ -25,10 +30,10 @@ export const writeToJsonFile = async (stations: Array<FormattedStation>) => {
         ...stations
       ]
 
-      await fs.writeFile(defaults.filePath, JSON.stringify(parsedResult), 'utf8');
+      await fs.writeFile(filePath, JSON.stringify(parsedResult), 'utf8');
     }
     else {
-      await fs.writeFile(defaults.filePath, JSON.stringify(stations), 'utf8');
+      await fs.writeFile(filePath, JSON.stringify(stations), 'utf8');
     }
   } catch (error) {
     console.error(error)
