@@ -4,11 +4,14 @@
   "description": "Fetches historic values from the Spanish government fuel stations API",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
+    "fetcher:dev": "ts-node -r tsconfig-paths/register src/fetcher/index.ts",
+    "fetcher:start": "node dist/fetcher/index.js",
+    "fetcher:bundle": "esbuild ./dist/fetcher/index.js --bundle --platform=node --outfile=output/historic_fuel_stations_fetcher.js",
+    "importer:dev": "ts-node -r tsconfig-paths/register src/importer/index.ts",
+    "importer:start": "node dist/importer/index.js",
+    "importer:bundle": "esbuild ./dist/importer/index.js --bundle --platform=node --outfile=output/historic_fuel_stations_importer.js",
     "build": "tsc && tsc-alias",
-    "start": "node dist/index.js",
-    "prepare": "ts-patch install",
-    "bundle": "esbuild ./dist/index.js --bundle --platform=node --outfile=output/historic_fuel_stations_fetcher.js"
+    "prepare": "ts-patch install"
   },
   "author": "JGeek00",
   "license": "ISC",

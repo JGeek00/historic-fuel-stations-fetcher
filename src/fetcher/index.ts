@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { Interval, DateTime } from 'luxon';
 import { assertEquals } from 'typia';
-import { twoDigits } from '@/utils/numbers';
-import { sleep } from '@/utils/sleep';
-import { HistoricServiceStationsResult } from '@/models/historic-service-stations-result';
-import { parseStationResult } from '@/parseStationResult';
-import { FormattedStation } from '@/models/formatted-station';
-import { writeToJsonFile } from '@/writeToJson';
+import { twoDigits } from '@fetcher/utils/numbers';
+import { sleep } from '@fetcher/utils/sleep';
+import { HistoricServiceStationsResult } from '@fetcher/models/historic-service-stations-result';
+import { parseStationResult } from '@fetcher/parseStationResult';
+import { FormattedStation } from '@fetcher/models/formatted-station';
+import { writeToJsonFile } from '@fetcher/writeToJson';
 
 const main = async () => {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone

@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
-import { HistoricStation } from "@/models/historic-service-stations-result";
-import { FormattedStation } from "@/models/formatted-station";
-import { parseStringToFloat } from "@/utils/parser";
+import { HistoricStation } from "@fetcher/models/historic-service-stations-result";
+import { FormattedStation } from "@fetcher/models/formatted-station";
+import { parseStringToFloat } from "@fetcher/utils/parser";
 
 export const parseStationResult = (station: HistoricStation, date: string) => {
   const d = DateTime.fromFormat(date, "dd/MM/yyyy h:mm:ss").setZone(Intl.DateTimeFormat().resolvedOptions().timeZone)

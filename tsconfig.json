@@ -13,7 +13,8 @@
     ],
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["./*"]
+      "@fetcher/*": ["./fetcher/*"],
+      "@importer/*": ["./importer/*"]
     }
   },
   "include": ["src/**/*"],
