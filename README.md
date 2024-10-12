@@ -25,4 +25,5 @@ This is a script that fetches the fuel stations historic data from the public AP
 3. Run ``node historic_fuel_stations_importer.js`` to start the importing process (this can take a long time)
 
 ## Importing a SQL file to PostgreSQL
-Run ``psql -U db_user -d db_name < dump.sql``
+- With command line: ``psql -U db_user -d db_name < dump.sql``
+- With PSQL tool on pgAdmin: ``\i file.sql``
