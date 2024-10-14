@@ -1,5 +1,6 @@
 export interface ImportedStation {
   stationId: string | null,
+  stationSignage: string | null,
   biodieselPrice: number | null,
   bioethanolPrice: number | null,
   CNGPrice: number | null,

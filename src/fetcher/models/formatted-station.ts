@@ -1,5 +1,6 @@
 export interface FormattedStation {
   stationId: string | null,
+  stationSignage: string | null;
   biodieselPrice: number | null,
   bioethanolPrice: number | null,
   CNGPrice: number | null,

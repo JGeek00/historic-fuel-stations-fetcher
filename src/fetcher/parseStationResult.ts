@@ -7,6 +7,7 @@ export const parseStationResult = (station: HistoricStation, date: string) => {
   const d = DateTime.fromFormat(date, "dd/MM/yyyy h:mm:ss").setZone(Intl.DateTimeFormat().resolvedOptions().timeZone)
   return <FormattedStation>{
     stationId: station.IDEESS ?? null,
+    stationSignage: station.Rótulo ?? null,
     biodieselPrice: parseStringToFloat(station["Precio Biodiesel"]),
     bioethanolPrice: parseStringToFloat(station["Precio Bioetanol"]),
     CNGPrice: parseStringToFloat(station["Precio Gas Natural Comprimido"]),
