@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES2021",
     "module": "commonjs",
+    "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -13,8 +13,9 @@
     ],
     "resolveJsonModule": true,
     "paths": {
-      "@fetcher/*": ["./fetcher/*"],
-      "@importer/*": ["./importer/*"]
+      "@fetcher/*": ["./src/fetcher/*"],
+      "@importer/*": ["./src/importer/*"],
+      "@shared/*": ["./src/shared/*"],
     }
   },
   "include": ["src/**/*"],
