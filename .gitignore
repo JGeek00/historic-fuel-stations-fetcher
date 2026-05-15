@@ -6,3 +6,4 @@
 database-connection-data.json
 stations.json
 historic_fuel_stations_fetcher.js
+.DS_Store

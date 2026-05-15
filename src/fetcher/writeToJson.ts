@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import { assertEquals } from 'typia';
-import { FormattedStation } from "@fetcher/models/formatted-station";
+import { FormattedStation } from '@shared/models/formatted-station';
 
 const checkPathExists = async (filePath: string) => {
   try {

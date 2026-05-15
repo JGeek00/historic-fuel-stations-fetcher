@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
 import { assertEquals } from 'typia';
-import { ImportedStation } from '@importer/models/imported-station';
 import { DatabaseConnection } from '@importer/models/database-connection';
 import { formatDateForDatabase } from '@importer/utils/date';
+import { FormattedStation } from '@shared/models/formatted-station';
 
 export const readDatabaseConnectionFile = async (filePath: string) => {
   try {
@@ -41,7 +41,7 @@ export const readParseFile = async (filePath: string) => {
   try {
     const file = await fs.readFile(filePath)
     const parsedJson = JSON.parse(file.toString())
-    let parsedResult = assertEquals<Array<ImportedStation>>(parsedJson)
+    let parsedResult = assertEquals<Array<FormattedStation>>(parsedJson)
     parsedResult = parsedResult.map(station => ({
       ...station,
       date: formatDateForDatabase(station.date)
