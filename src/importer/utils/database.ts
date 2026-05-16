@@ -138,8 +138,12 @@ export const importToDatabase = async (pool: Pool, data: FormattedStation[]) => 
     // 4. INSERT from temp table into historic_data, skipping duplicates
     const insertResult = await client.query(`
       INSERT INTO historic_data (${COLUMN_NAMES_QUOTED})
-      SELECT ${COLUMN_NAMES_QUOTED} FROM ${TEMP_TABLE}
-      ON CONFLICT ("stationId", "date") DO NOTHING
+      SELECT ${COLUMN_NAMES_QUOTED} FROM ${TEMP_TABLE} t
+      WHERE NOT EXISTS (
+        SELECT 1 FROM historic_data h
+        WHERE h."stationId" = t."stationId"
+          AND h."date" = t."date"
+      )
     `)
 
     const inserted = insertResult.rowCount ?? 0
